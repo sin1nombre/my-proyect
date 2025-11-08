@@ -1,0 +1,68 @@
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+
+# Asset Store y paquetes descargados
+[Aa]sset[Ss]tore/
+Packages/com.unity.package-manager/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos generados por VS/JetBrains
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.unityproj
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.booproj
+*.svd
+
+# Archivos de compilación
+*.apk
+*.aab
+*.app
+*.unitypackage
+*.exe
+
+# Crash reports
+sysinfo.txt
+
+# Configuración temporal del Editor
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Cache de IL2CPP y builds intermedios
+[Bb]uilds*/**
+[Bb]uild*/**
+[Ll]ibrary/Bee/**
+[Ll]ibrary/ScriptAssemblies/**
+[Ll]ibrary/PackageCache/**
+[Ll]ibrary/ShaderCache/**
+
+# Datos de perfiles del usuario
+*.profiler
+*.perfdata
+*.stacktrace
+*.dmp
+
+# Colaborate y PlasticSCM
+.collabignore
+.plastic/
+
+# Archivos locales (no compartir)
+.env
+*.local
+*.log
