@@ -1,41 +1,50 @@
 using UnityEngine;
 
-using UnityEngine;
-
 public class movimiento_jugador : MonoBehaviour
 {
     public float velocidad = 5f;
     public float fuerza_salto = 7f;
-    private Rigidbody2D cuerpo;
+    public float control_aereo = 0.5f;
+    public int saltos_maximos = 2;
+    // -----------------------------
+    private Rigidbody2D rb;
     private bool en_suelo;
+    private int contador_saltos;
 
     void Start()
     {
-        cuerpo = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        contador_saltos = saltos_maximos;
     }
 
     void Update()
     {
-        // Movimiento horizontal
         float mover = Input.GetAxis("Horizontal");
-        cuerpo.linearVelocity = new Vector2(mover * velocidad, cuerpo.linearVelocity.y);
+        float velocidad_actual = en_suelo ? velocidad : velocidad * control_aereo;
 
-        // Salto
-        if (Input.GetButtonDown("Jump") && en_suelo)
+        rb.linearVelocity = new Vector2(mover * velocidad_actual, rb.linearVelocity.y);
+
+        if (Input.GetButtonDown("Jump") && contador_saltos > 0)
         {
-            cuerpo.linearVelocity = new Vector2(cuerpo.linearVelocity.x, fuerza_salto);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerza_salto);
+            contador_saltos--;
+        }
+
+        if (en_suelo)
+        {
+            contador_saltos = saltos_maximos; // reinicia al tocar el suelo
         }
     }
 
-    void OnCollisionEnter2D(Collision2D colision)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        if (colision.gameObject.CompareTag("Ground"))
+        if (col.gameObject.CompareTag("Ground"))
             en_suelo = true;
     }
 
-    void OnCollisionExit2D(Collision2D colision)
+    void OnCollisionExit2D(Collision2D col)
     {
-        if (colision.gameObject.CompareTag("Ground"))
+        if (col.gameObject.CompareTag("Ground"))
             en_suelo = false;
     }
 }
