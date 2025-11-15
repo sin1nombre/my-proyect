@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class seguir_jugador : MonoBehaviour
+public class Seguir_jugador : MonoBehaviour
 {
     public Transform jugador;  // arrastra aquí el jugador en el inspector
     public float suavizado = 5f; // velocidad con la que sigue

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class movimiento_jugador : MonoBehaviour
+public class Movimiento_jugador : MonoBehaviour
 {
     public float velocidad = 5f;
     public float fuerza_salto = 7f;
