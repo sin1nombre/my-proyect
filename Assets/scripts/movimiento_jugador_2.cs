@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class movimiento_jugador : MonoBehaviour
+public class movimiento_jugador_2 : MonoBehaviour
 {
     public float velocidad = 5f;
     public float fuerza_salto = 7f;
@@ -12,6 +12,7 @@ public class movimiento_jugador : MonoBehaviour
     private Rigidbody2D rb;
     private bool en_suelo;
     private int contador_saltos;
+
     Vector3 escalaBase;
 
     void Start()
@@ -25,13 +26,13 @@ public class movimiento_jugador : MonoBehaviour
     {
 
         float mover = 0f;
-        if (Input.GetKey(KeyCode.A)) mover = -1f;
-        if (Input.GetKey(KeyCode.D)) mover = 1f;
+        if (Input.GetKey(KeyCode.LeftArrow)) mover = -1f;
+        if (Input.GetKey(KeyCode.RightArrow)) mover = 1f;
 
         float velocidad_actual = en_suelo ? velocidad : velocidad * control_aereo;
         rb.linearVelocity = new Vector2(mover * velocidad_actual, rb.linearVelocity.y);
 
-        if (Input.GetKeyDown(KeyCode.W) && contador_saltos > 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && contador_saltos > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerza_salto);
             contador_saltos--;
